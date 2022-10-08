@@ -2,7 +2,7 @@ import React from "react";
 
 const Loading = (props) => {
   return (
-    <div style={{widht:"100vw", height:"80vh", display:"flex", justifyContent:"center", alignItems:"center"}} className="text-center my-5">
+    <div style={{widht:"100vw", height:"80vh", display:"flex", justifyContent:"center", alignItems:"center"}} className="text-center">
         <div className="spinner-grow text-primary" role="status">
   <span className="visually-hidden">Loading...</span>
 </div>
