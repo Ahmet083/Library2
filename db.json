@@ -4,28 +4,28 @@
       "id": 1,
       "name": "Yaban",
       "author": "Yakup Kadri",
-      "isbn": "",
-      "category": "2"
+      "isbn": "1111111111114",
+      "categoryId": "1"
     },
     {
       "id": 2,
       "name": "Tanri Misafiri",
       "author": "Resat Nuri",
-      "isbn": "",
+      "isbn": "1111111111113",
       "categoryId": "2"
     },
     {
       "id": 3,
       "name": "Suc ve Ceza",
       "author": "Dostoyevsky",
-      "isbn": "",
+      "isbn": "1111111111112",
       "categoryId": "1"
     },
     {
       "id": 4,
       "name": "Denemeler",
       "author": "Montaigne",
-      "isbn": "",
+      "isbn": "1111111111111",
       "categoryId": "3"
     }
   ],

@@ -1,28 +1,37 @@
-import React, { useEffect, useState} from "react";
+/* eslint-disable no-undef */
+import React, { useEffect, useState } from "react";
 import axios from "axios";
+import Loading from "./Loading";
 
 const ListBooks = (props) => {
+  const [books, setBooks] = useState(null);
+  const [categories, setCategories] = useState(null);
 
-  const [books, setBooks] = useState(null)
+  useEffect(() => {
+    axios
+      .get("http://localhost:3004/books")
+      .then((resBook) => {
+        console.log("resBook", resBook);
+        setBooks(resBook.data);
+        axios
+        .get("http://localhost:3004/categories")
+        .then((resCat) => {
+          setTimeout(() => {
+           setCategories(resCat.data);
+          }, 1000)
 
-  useEffect (()=> {
-  axios.get ("http://localhost:3004/books")
-  .then((res) => {
-  console.log(res);
-  }) 
-  .catch((err)=> { console.log(err)});
-  // eslint-disable-next-line no-undef
-  setBooks(res.data);
-  },[]);
-  if(books === null) {
-     return(
-     <div>
-      <h1>Loading...</h1>
-     </div>
-    )
-         }
-    
-  
+          
+          })
+          .catch((err) => console.log("categories err", err));
+      })
+      .catch((err) => console.log("books err", err));
+  }, []);
+  if (books === null || categories === null) {
+    return (
+     <Loading />
+    );
+  }
+
   return (
     <div className="container my-5">
       <div>
@@ -37,18 +46,21 @@ const ListBooks = (props) => {
               </th>
             </tr>
           </thead>
-          <tbody>{
-            books.map
-            }
-    <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-    </tr>
-   
-    >
-  </tbody>
+          <tbody>
+            {books.map((book) => {
+              const category = categories.find(
+                (cat) => cat.id == book.categoryId
+                );
+              return (
+                <tr>
+                  <td>{book?.name}</td>
+                  <td>{book?.author}</td>
+                  <td>{category?.name}</td>
+                  <td>{book.isbn}</td>
+                </tr>
+              );
+            })}
+          </tbody>
         </table>
       </div>
     </div>
