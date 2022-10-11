@@ -27,12 +27,23 @@
       "author": "Montaigne",
       "isbn": "1111111111111",
       "categoryId": "3"
+    },
+    {
+      "id": 5
+    },
+    {
+      "id": 6
+    },
+    {
+      "id": 7
+    },
+    {
+      "id": 8
     }
   ],
-  
   "categories": [
     {
-      "id":1,
+      "id": 1,
       "name": "Roman"
     },
     {
