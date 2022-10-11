@@ -5,40 +5,42 @@
       "name": "Yaban",
       "author": "Yakup Kadri",
       "isbn": "1111111111114",
-      "categoryId": "1"
+      "categoryId": 1
     },
     {
       "id": 2,
       "name": "Tanri Misafiri",
       "author": "Resat Nuri",
       "isbn": "1111111111113",
-      "categoryId": "2"
+      "categoryId": 1
     },
     {
       "id": 3,
       "name": "Suc ve Ceza",
       "author": "Dostoyevsky",
       "isbn": "1111111111112",
-      "categoryId": "1"
+      "categoryId": 1
     },
     {
       "id": 4,
       "name": "Denemeler",
       "author": "Montaigne",
       "isbn": "1111111111111",
-      "categoryId": "3"
+      "categoryId": 3
     },
     {
-      "id": 5
+      "id": 1665517021675,
+      "name": "gk",
+      "author": "s",
+      "isbn": "",
+      "categoryId": "2"
     },
     {
-      "id": 6
-    },
-    {
-      "id": 7
-    },
-    {
-      "id": 8
+      "id": 1665518424917,
+      "name": "ahmet",
+      "author": "gov",
+      "isbn": "",
+      "categoryId": "4"
     }
   ],
   "categories": [

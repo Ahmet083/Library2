@@ -1,8 +1,10 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import Loading from "./Loading";
+import { useNavigate } from "react-router-dom";
 
 const AddBookForm = () => {
+  const navigate = useNavigate()
   const [categories, setCategories] = useState(null);
   const [bookname, setBookName] = useState("");
   const [author, setAuthor] = useState("");
@@ -14,6 +16,7 @@ const AddBookForm = () => {
       .then((res) => {
         console.log("Categories");
         setCategories(res.data);
+        
       })
       .catch((err) => console.log(err));
   }, []);
@@ -24,16 +27,22 @@ const AddBookForm = () => {
       alert("Yazar, Kitap veya Kategori Bos Birakilamaz");
     }
     const newBook = {
-        id: new Date().getTime(),       
-        name: bookname,
-        author: author,
-        isbn: isbn,
-        categoryId: category
-    }  
+      id: new Date().getTime(),
+      name: bookname,
+      author: author,
+      isbn: isbn,
+      categoryId: category
+    };
     console.log("newBook", newBook);
-   axios.post("http://localhost:3004/books")
+
+   axios.post("http://localhost:3004/books", newBook)
    .then((res)=> {
-    console.log(res);
+    console.log("kitap ekle res", res);
+    setBookName("");
+    setAuthor("");
+    setIsbn("");
+    setCategory("");
+    navigate("/");
    })
    .catch((err) => console.log(err))
   };

@@ -45,7 +45,7 @@ const ListBooks = (props) => {
               <th scope="col">Kitap Adi</th>
               <th scope="col">Yazar Adi</th>
               <th scope="col">Kategori</th>
-              <th className="text-end" scope="col">
+              <th className="text-center" scope="col">
                 ISBN{" "}
               </th>
             </tr>
@@ -53,14 +53,14 @@ const ListBooks = (props) => {
           <tbody>
             {books.map((book) => {
               const category = categories.find(
-                (cat) => cat.id === book.categoryId
+                (cat) => cat.id == book.categoryId
                 );
               return (
                 <tr>
                   <td>{book?.name}</td>
                   <td>{book?.author}</td>
                   <td>{category?.name}</td>
-                  <td>{book.isbn}</td>
+                  <td className="text-center">{book.isbn === "" ? "---" : book.isbn}</td>
                 </tr>
               );
             })}

@@ -1,12 +1,13 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   return (
     <div>
       <nav className="navbar display-4 navbar-expand-sm  bg-dark">
-        <a className="navbar-brand display-3 text-light" href="#">
+        <Link  className="navbar-brand display-3 text-light" to="/">
           LIBRARY
-        </a>
+        </Link>
         <button
           className="navbar-toggler"
           type="button"
@@ -22,14 +23,14 @@ const Header = () => {
         >
           <ul className="navbar-nav mr-auto ">
             <li className="nav-item active">
-              <a className="nav-link text-warning" href="#">
-                Home <span className="sr-only">(current)</span>
-              </a>
+              <Link className="nav-link text-warning" to="/">
+                Kitaplik <span className="sr-only">(current)</span>
+              </Link>
             </li>
             <li className="nav-item">
-              <a className="nav-link text-warning" href="#">
-                Link
-              </a>
+              <Link className="nav-link text-warning" to="/">
+               Kategori
+              </Link>
             </li>
           </ul>
         </div>
