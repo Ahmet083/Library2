@@ -1,57 +1,53 @@
-import axios from "axios";
 import React, { useEffect, useState } from "react";
-import Loading from "./Loading";
-import { useNavigate } from "react-router-dom";
 
-const AddBookForm = () => {
-  const navigate = useNavigate()
-  const [categories, setCategories] = useState(null);
-  const [bookname, setBookName] = useState("");
-  const [author, setAuthor] = useState("");
-  const [isbn, setIsbn] = useState("");
-  const [category, setCategory] = useState("");
-  useEffect(() => {
-    axios
-      .get("http://localhost:3004/categories")
-      .then((res) => {
-        console.log("Categories");
-        setCategories(res.data);
-        
-      })
-      .catch((err) => console.log(err));
-  }, []);
+import Header from "../component/header"
+import { useParams } from "react-router-dom";
+import axios from "axios";
+import Loading from "../component/Loading";
 
-  const handleSubmit = (event) => {
+
+
+
+const EditBook =(props) => {
+    const params = useParams();
+    console.log("params" , params)
+
+    const [bookname, setBookName] = useState("")
+    const [author, setAuthor] = useState("")
+    const [isbn, setIsbn] = useState("")
+    const [category, setCategory] = useState("")
+    const [categories, setCategories] = useState(null)
+
+    useEffect (()=> {
+        axios.get(`http://localhost:3004/books/${params.bookId}`)
+        .then((res) => {
+            console.log(res.data);
+            setBookName(res.data.name)
+            setAuthor(res.data.author)
+            setIsbn(res.data.isbn)
+            setCategory(res.data.categoryId)
+
+            axios.get("http://localhost:3004/categories")
+            .then((res)=>{
+                setCategories(res.data) 
+            })
+            .catch((err)=> console.log('categories error', err))
+        })
+        .catch((err)=> console.log(err))
+    },[])
+const handleSubmit = (event) => {
     event.preventDefault();
-    if (bookname === "" || author === "" || category === "") {
-      alert("Yazar, Kitap veya Kategori Bos Birakilamaz");
-    }
-    const newBook = {
-      id: new Date().getTime(),
-      name: bookname,
-      author: author,
-      isbn: isbn,
-      categoryId: category
-    };
-    console.log("newBook", newBook);
+}
 
-   axios.post("http://localhost:3004/books", newBook)
-   .then((res)=> {
-    console.log("kitap ekle res", res);
-    setBookName("");
-    setAuthor("");
-    setIsbn("");
-    setCategory("");
-    navigate("/");
-   })
-   .catch((err) => console.log(err))
-  };
+if (categories === null ) {
+    return <Loading />
+}
 
-  if (categories == null) {
-    return <Loading />;
-  }
-  return (
-    <div className="container my-5">
+    return (
+        <div>
+           <Header />
+          
+           <div className="container my-5">
       <form onSubmit={handleSubmit}>
         <div className="row my-4">
           <div className="col">
@@ -98,12 +94,16 @@ const AddBookForm = () => {
         </div>
         <div className="d-flex justify-content-center">
           <button type="submit" className="btn btn-primary w-50">
-           Kitabi Ekle
+           Kitabi Duzelt
           </button>
         </div>
       </form>
     </div>
-  );
-};
+        </div>
+       
 
-export default AddBookForm;
+
+    )
+}
+
+export default EditBook

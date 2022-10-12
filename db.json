@@ -27,37 +27,23 @@
       "author": "Montaigne",
       "isbn": "1111111111111",
       "categoryId": 3
-    },
-    {
-      "id": 1665517021675,
-      "name": "gk",
-      "author": "s",
-      "isbn": "",
-      "categoryId": "2"
-    },
-    {
-      "id": 1665518424917,
-      "name": "ahmet",
-      "author": "gov",
-      "isbn": "",
-      "categoryId": "4"
     }
   ],
   "categories": [
     {
-      "id": 1,
+      "id": "1",
       "name": "Roman"
     },
     {
-      "id": 2,
+      "id": "2",
       "name": "Hikaye"
     },
     {
-      "id": 3,
+      "id": "3",
       "name": "Deneme"
     },
     {
-      "id": 4,
+      "id": "4",
       "name": "Siir"
     }
   ]
